@@ -7,8 +7,8 @@ footer {
 	margin-top: 40px;
 }
 
-.mainContainer {
-	margin-top: 50px;
+.navbar {
+	border-radius: 0px !important;
 }
 
 .full {

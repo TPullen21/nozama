@@ -11,29 +11,38 @@ Template.add_product.events({
 		if (file) {
 			fsFile = new FS.File(file);
 
+			console.log('Here');
+
 			ProductsImages.insert(fsFile, function(err, result) {
 				if (!err) {
+					console.log('Here2');
+					console.log(result);
 					var productImage = '/cfs/files/ProductsImages/' + result._id;
 
-					Products.insert({
+					Meteor.call('addProduct', productImage, name, category, description, is_featured);
+
+					/*Products.insert({
 						name: name,
 						category: category,
 						description: description,
 						is_featured: is_featured,
 						image: productImage,
 						createdAt: new Date()
-					});
+					});*/
 				} else {
+					console.log('Here3');
 					var productImage = '/img/noimage.png';
 
-					Products.insert({
+					Meteor.call('addProduct', productImage, name, category, description, is_featured);
+
+					/*Products.insert({
 						name: name,
 						category: category,
 						description: description,
 						is_featured: is_featured,
 						image: productImage,
 						createdAt: new Date()
-					});
+					});*/
 				}
 			});
 		}

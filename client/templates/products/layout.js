@@ -11,6 +11,10 @@ Template.registerHelper('truncateText', function(text, length) {
 
 // Get Average Rating
 Template.registerHelper('getAvg', function (reviews) {
+    if (!reviews) {
+      return undefined;
+    }
+
     var sum = 0;
     for (var i = 0; i < reviews.length; i++) {
         sum += parseInt(reviews[i].rating, 10);
@@ -26,4 +30,8 @@ Template.registerHelper('getReviewsTotal', function (total) {
    } else {
     return 0;
    }
+});
+
+Template.registerHelper('formatDate', function(date) {
+  return moment(date).format('MM-DD-YYYY');
 });
